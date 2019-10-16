@@ -26,6 +26,10 @@ public class Process implements Comparable<Process> {
         this.completionTime = completionTime;
     }
 
+    public void setRunTime(int runTime) {
+        this.runTime = runTime;
+    }
+
     Process(char name, int arrivalTime, int runTime, int priority) {
         super();
         this.name = name;
