@@ -21,13 +21,13 @@ public class FCFS {
         for (int i = 1; i < processes.size(); i++) {
             processesRunning.append(processes.get(i).getName());
 
-            processes.get(i).setResponseTime(processes.get(i - 1).getResponseTime() + processes.get(i - 1).getRunTime());
             int wt = processes.get(i - 1).getRunTime() + processes.get(i - 1).getArrivalTime() + processes.get(i - 1).getWaitingTime();
             wt = wt - processes.get(i).getArrivalTime();
             if (wt < 0) {
                 wt = 0;
             }
             processes.get(i).setWaitingTime(wt);
+            processes.get(i).setResponseTime(wt);
 
             processes.get(i).setTurnAroundTime(processes.get(i).getWaitingTime() + processes.get(i).getRunTime());
 
