@@ -113,11 +113,6 @@ public class Process implements Comparable<Process> {
             processes.add(getRandomProcess());
         }
         Collections.sort(processes);
-        System.out.println("Processes:");
-        System.out.println("Name" + "\t" + "Arrival Time" + "\t" + "Run Time" + "\t" + "Priority" + "\t" + "Turn Around Time" + "\t" + "Waiting Time" + "\t" + "Response Time");
-        for(Process p : processes){
-            System.out.println(p.toString());
-        }
         return processes;
     }
 }

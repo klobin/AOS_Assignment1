@@ -9,10 +9,6 @@ public class Roundrobin {
         int totalResponseTime = 0;
 
         return roundRobin(processes, 2);
-
-//        return new Stat((float) totalTurnAroundTime / (float) processes.size(),
-//                (float) totalResponseTime / (float) processes.size(),
-//                (float) totalWaitingTime / (float) processes.size());
     }
 
     public static Stat roundRobin(List<Process> processes, int n) {
@@ -153,9 +149,9 @@ public class Roundrobin {
         int responseTime = 0;
         int waitingTime = 0;
 
-        System.out.println("name ctime wtime");
+
         for (int i = 0; i < processes.size(); i++) {
-            System.out.println(" " + processes.get(i).getName() + " " + comp[i]+ " " + w[i]);
+
            processes.get(i).setTurnAroundTime(comp[i]); // Turnaround time
            processes.get(i).setResponseTime(startTimeMap.get(processes.get(i).getName()));
            processes.get(i).setWaitingTime(w[i]);
@@ -167,10 +163,6 @@ public class Roundrobin {
             res = res + w[i];
             resc = resc + comp[i];
         }
-
-        System.out.println("Average waiting time is " + (float) res / processes.size());
-        System.out.println("Average compilation time is "  + (float) resc / processes.size());
-        System.out.println("Sequence is like that " + seq);
 
         return new Stat(turnAroundTime/ processes.size(),
                 responseTime / processes.size(),
