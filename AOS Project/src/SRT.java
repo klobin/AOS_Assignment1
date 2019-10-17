@@ -105,6 +105,12 @@ public class SRT
             total_wt = total_wt + wt[i];
             total_tat = total_tat + tat[i];
         }
+        for (Process p : processes) {
+        System.out.println(p.getName()+"\t\t\t"+p.getArrivalTime()+"\t\t\t"+p.getRunTime()+"\t\t\t"+p.getPriority());
+    }
+        System.out.println("\nAverage Turnaround Time: " + ((float) total_tat / (float) processes.size()));
+        //System.out.println("Average Waiting Time: " + ((float) total_wt / (float) processes.size()));
+        //System.out.println("Average Response Time: " + ((float) total_wt / (float) processes.size()));
 
         return new Stat(total_tat/n,
                 total_wt /n,

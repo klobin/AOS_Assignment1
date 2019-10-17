@@ -65,6 +65,16 @@ public class SJF {
             processes.get(i).setTurnAroundTime(ta[i]);
         }
 
+
+        for (Process p : processes) {
+            System.out.println(p.toString());
+        }
+//
+//        System.out.println("Process: " + processes.toString());
+        System.out.println("\nAverage Turnaround Time: " +avgta/10 );
+        System.out.println("Average Waiting Time: " +  avgwt/10 );
+        System.out.println("Average Response Time: " + avgwt/10);
+
        return new Stat(avgta/n, avgwt/n, avgwt/n);
     }
 }

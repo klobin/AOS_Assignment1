@@ -12,11 +12,11 @@ public class ScheduleAlgo {
         float responseTime = 0;
         float waitingTime = 0;
 
-        List<Process> processes = Process.generateProcesses(10);
+       List<Process> processes = Process.generateProcesses(10);
 
         for (int i = 0; i < 5; i++) {
             Process.setCh('A');
-            Stat s = fcfc.run(processes);
+            Stat s = fcfc.run(Process.generateProcesses(10));
             turnaroundTime = turnaroundTime + s.getTurnAroudTime();
             responseTime = responseTime + s.getResponseTime();
             waitingTime = waitingTime + s.getWaitingTIme();
@@ -31,9 +31,11 @@ public class ScheduleAlgo {
         responseTime = 0;
         waitingTime = 0;
 
+        System.out.println("\nShortest Job First Results");
+
         for (int i = 0; i < 5; i++) {
             Process.setCh('A');
-            Stat s = sjf.runSJF(processes);
+            Stat s = sjf.runSJF(Process.generateProcesses(10));
             turnaroundTime = turnaroundTime + s.getTurnAroudTime();
             responseTime = responseTime + s.getResponseTime();
             waitingTime = waitingTime + s.getWaitingTIme();
@@ -48,9 +50,11 @@ public class ScheduleAlgo {
         responseTime = 0;
         waitingTime = 0;
 
+        System.out.println("\nShortest remaining time First Results");
+
         for (int i = 0; i < 5; i++) {
             Process.setCh('A');
-            Stat s = srt.findavgTime(processes, 2);
+            Stat s = srt.findavgTime(Process.generateProcesses(10), 2);
             turnaroundTime = turnaroundTime + s.getTurnAroudTime();
             responseTime = responseTime + s.getResponseTime();
             waitingTime = waitingTime + s.getWaitingTIme();
@@ -66,15 +70,36 @@ public class ScheduleAlgo {
         responseTime = 0;
         waitingTime = 0;
 
+        System.out.println("\nRound Robin Results");
+
         for (int i = 0; i < 5; i++) {
             Process.setCh('A');
-            Stat s = rb.run(processes);
+            Stat s = rb.run(Process.generateProcesses(10));
             turnaroundTime = turnaroundTime + s.getTurnAroudTime();
             responseTime = responseTime + s.getResponseTime();
             waitingTime = waitingTime + s.getWaitingTIme();
         }
 
         System.out.println("\n\nCombined Stats for Round robin over 5 sets of input:");
+        System.out.println("Turnaround Time: " + turnaroundTime / Process.processLen);
+        System.out.println("Response Time: " + responseTime / Process.processLen);
+        System.out.println("Waiting Time: " + waitingTime / Process.processlen);
+
+        turnaroundTime = 0;
+        responseTime = 0;
+        waitingTime = 0;
+
+        System.out.println("\nHighest priority First non preamptive Results");
+
+        for (int i = 0; i < 5; i++) {
+            Process.setCh('A');
+            Stat s = hpf.run(Process.generateProcesses(10));
+            turnaroundTime = turnaroundTime + s.getTurnAroudTime();
+            responseTime = responseTime + s.getResponseTime();
+            waitingTime = waitingTime + s.getWaitingTIme();
+        }
+
+        System.out.println("\n\nCombined Stats for Highest priority first non pre over 5 sets of input:");
         System.out.println("Turnaround Time: " + turnaroundTime / 5);
         System.out.println("Response Time: " + responseTime / 5);
         System.out.println("Waiting Time: " + waitingTime / 5);
@@ -83,32 +108,17 @@ public class ScheduleAlgo {
         responseTime = 0;
         waitingTime = 0;
 
+        System.out.println("\nHighest priority First preamptive Results");
+
         for (int i = 0; i < 5; i++) {
             Process.setCh('A');
-            Stat s = hpf.run(processes);
+            Stat s = hpfp.run(Process.generateProcesses(10));
             turnaroundTime = turnaroundTime + s.getTurnAroudTime();
             responseTime = responseTime + s.getResponseTime();
             waitingTime = waitingTime + s.getWaitingTIme();
         }
 
-        System.out.println("\n\nCombined Stats for Highest priority first over 5 sets of input:");
-        System.out.println("Turnaround Time: " + turnaroundTime / 5);
-        System.out.println("Response Time: " + responseTime / 5);
-        System.out.println("Waiting Time: " + waitingTime / 5);
-
-            turnaroundTime = 0;
-        responseTime = 0;
-        waitingTime = 0;
-
-        for (int i = 0; i < 5; i++) {
-            Process.setCh('A');
-            Stat s = hpfp.run(processes);
-            turnaroundTime = turnaroundTime + s.getTurnAroudTime();
-            responseTime = responseTime + s.getResponseTime();
-            waitingTime = waitingTime + s.getWaitingTIme();
-        }
-
-        System.out.println("\n\nCombined Stats for Highest priority first priority over 5 sets of input:");
+        System.out.println("\n\nCombined Stats for Highest priority first preamptive over 5 sets of input:");
         System.out.println("Turnaround Time: " + turnaroundTime / 5);
         System.out.println("Response Time: " + responseTime / 5);
         System.out.println("Waiting Time: " + waitingTime / 5);

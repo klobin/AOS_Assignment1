@@ -1,9 +1,4 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class HPFP {
 
@@ -23,6 +18,11 @@ public class HPFP {
         Queue<Process> q3 = new LinkedList<>();
         Queue<Process> q4 = new LinkedList<>();
         StringBuilder processesRunning = new StringBuilder();
+        System.out.println("Name" + "\t" + "Arrival Time" + "\t" + "Run Time" + "\t" + "Priority" + "\t"
+                + "Turn Around Time" + "\t" + "Waiting Time" + "\t" + "Response Time");
+        for(Process p: processes){
+            System.out.println(p);
+        }
         System.out.println("\n\nRunning HPF Preemptive");
         System.out.println("Name" + "\t" + "Arrival Time" + "\t" + "Run Time" + "\t" + "Priority" + "\t"
                 + "Turn Around Time" + "\t" + "Waiting Time" + "\t" + "Response Time");

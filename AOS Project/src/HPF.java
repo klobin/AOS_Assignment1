@@ -22,6 +22,16 @@ public class HPF {
         Queue<Process> q4 = new LinkedList<>();
         StringBuilder processesRunning = new StringBuilder();
 
+        System.out.println("Name" + "\t" + "Arrival Time" + "\t" + "Run Time" + "\t" + "Priority" + "\t"
+                + "Turn Around Time" + "\t" + "Waiting Time" + "\t" + "Response Time");
+        for(Process p: processes){
+            System.out.println(p);
+        }
+
+        System.out.println("\n\nRunning HPF nonPreemptive");
+        System.out.println("Name" + "\t" + "Arrival Time" + "\t" + "Run Time" + "\t" + "Priority" + "\t"
+                + "Turn Around Time" + "\t" + "Waiting Time" + "\t" + "Response Time");
+
         for (int i = 0; i < processes.size(); i++) {
             switch (processes.get(i).getPriority()) {
                 case 1: {
@@ -74,6 +84,15 @@ public class HPF {
             ranProcesses.add(x);
             i++;
         }
+
+        for (Process p : ranProcesses) {
+            System.out.println(p.toString());
+        }
+
+        System.out.println("Process: " + processesRunning.toString());
+        System.out.println("\nAverage Turnaround Time: " + ((float) totalTurnAroundTime / (float) processes.size()));
+        System.out.println("Average Waiting Time: " + ((float) totalWaitingTime / (float) processes.size()));
+        System.out.println("Average Response Time: " + ((float) totalResponseTime / (float) processes.size()));
 
         return new Stat((float) totalTurnAroundTime / (float) processes.size(),
                 (float) totalResponseTime / (float) processes.size(),

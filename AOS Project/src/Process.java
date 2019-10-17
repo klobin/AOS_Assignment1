@@ -1,10 +1,12 @@
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 public class Process implements Comparable<Process> {
+
+    public static int processLen = 100;
+    public static int processlen = 50;
 
     private static char ch = 'A';
     private static Random rand = new Random(0);
